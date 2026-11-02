@@ -1,0 +1,30 @@
+
+/* MEMO Studio · Penta Court immersive viewer — preserves existing BIM & controls */
+html,body{height:100%;overflow:hidden}
+body{background:#edf0eb!important;color:#273a31}
+header,#top-tabs{display:none!important}
+main{display:block!important;height:100dvh!important;position:relative!important;overflow:hidden!important}
+main>aside{display:none!important;position:absolute!important;top:68px!important;left:12px!important;width:min(310px,calc(100vw - 24px))!important;height:auto!important;max-height:calc(100dvh - 84px)!important;z-index:100!important;padding:16px!important;border:1px solid #dce4db!important;border-radius:16px!important;background:#fffefa!important;box-shadow:0 12px 38px #263c302f!important;overflow-y:auto!important}
+body.pc-show-aside main>aside{display:block!important}
+main>.viewport{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;overflow:hidden!important;background:white!important}
+#view{width:100%!important;height:100%!important}
+.hud,.foot,#nav-hint{display:none!important}
+.zoom{right:12px!important;top:12px!important;padding:3px!important;gap:1px!important;z-index:50!important;border:1px solid #dce5dc!important;border-radius:12px!important;background:#fffdf6ed!important;box-shadow:0 4px 20px #263c301b!important}
+.zoom button{padding:6px 8px!important;min-width:25px!important;font-size:11px!important}
+#pc-ui{position:absolute;z-index:65;inset:10px 196px auto 12px;display:flex;align-items:center;gap:7px;pointer-events:none;min-height:45px}
+#pc-brand,#pc-controls{background:#fffcf4ee;border:1px solid #dde5dc;backdrop-filter:blur(12px);box-shadow:0 5px 22px #24352a16;pointer-events:auto}
+#pc-brand{display:flex;align-items:center;gap:8px;border-radius:12px;padding:8px 11px;flex-shrink:0;white-space:nowrap;color:#294337}
+#pc-brand .pc-mark{width:24px;height:24px;border-radius:7px;background:#46715b;color:white;display:grid;place-items:center;font-weight:750;font-size:10px}
+#pc-brand strong{font-size:12px;letter-spacing:.02em}
+#pc-controls{display:flex;gap:3px;align-items:center;min-width:0;border-radius:12px;padding:3px;overflow-x:auto;scrollbar-width:none}
+#pc-controls::-webkit-scrollbar{display:none}
+#pc-controls button,#pc-controls select,#pc-controls a{font-size:11px;font-weight:550;border:0;border-radius:8px;padding:8px 10px;color:#31483a;background:transparent;text-decoration:none;white-space:nowrap;cursor:pointer}
+#pc-controls button:hover,#pc-controls select:hover,#pc-controls a:hover{background:#e8eee7}
+#pc-controls .pc-on{background:#e3eee3;color:#256145}
+#pc-controls select{max-width:125px;appearance:auto}
+#pc-trail{position:absolute;z-index:50;bottom:14px;left:14px;display:flex;align-items:center;gap:7px;padding:8px 11px;background:#fffdf5db;border:1px solid #e3e8df;border-radius:11px;backdrop-filter:blur(8px);font-size:11px;color:#516459;pointer-events:none}
+#pc-trail .pc-dot{width:7px;height:7px;border-radius:50%;background:#46966c;box-shadow:0 0 0 4px #69b78923}
+#pc-sidebar-close{width:100%;margin-bottom:10px!important;background:#e8eee8!important;border-radius:8px!important;text-align:left!important;border-color:#e0e8de!important}
+body.pc-show-aside #pc-toggle{background:#dce9df!important}
+@media(max-width:900px){#pc-ui{right:92px}.zoom{max-width:85px;flex-wrap:wrap}.zoom #nav-pan,.zoom #nav-orbit,.zoom .nav-help{display:none!important}}
+@media(max-width:640px){#pc-ui{inset:7px 8px auto 8px;flex-wrap:wrap;gap:5px}#pc-brand{padding:6px 9px}#pc-controls{max-width:calc(100vw - 16px);width:100%;padding:2px}#pc-controls button,#pc-controls select,#pc-controls a{padding:7px;font-size:11px}.zoom{top:auto!important;right:10px!important;bottom:10px!important;max-width:none!important}.zoom #nav-pan,.zoom #nav-orbit,.zoom .nav-help{display:none!important}#pc-trail{bottom:55px;left:10px;font-size:10px}main>aside{top:93px!important;max-height:calc(100dvh - 115px)!important}}
