@@ -1,18 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Penta Court | MEMO Studio</title><style>
-*{box-sizing:border-box}html,body{height:100%;margin:0}body{font:13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;background:#f7f7f4;color:#26312c}.shell{height:100dvh;display:flex;flex-direction:column}header{flex-shrink:0;min-height:65px;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:white;border-bottom:1px solid #e5e7e1}.brand{display:flex;align-items:center;gap:14px;white-space:nowrap;text-decoration:none;color:inherit}.brand strong{font-size:20px;letter-spacing:1.5px}.brand span{font-size:11px;color:#8a8e84}nav{display:flex;gap:7px;align-items:center;overflow-x:auto}nav button{font:inherit;padding:10px 13px;border:1px solid #e2e5dd;background:white;color:#5d6861;cursor:pointer;border-radius:4px;white-space:nowrap}nav button[aria-selected=true]{background:#a63f4b;color:white;border-color:#a63f4b}nav button:hover:not([aria-selected=true]){background:#f9eded}nav a{color:#56695a;white-space:nowrap;text-decoration:none;border-bottom:1px solid #9daaa0;margin-left:12px}main{position:relative;flex:1;min-height:0}iframe{display:block;width:100%;height:100%;border:0;background:#fff}.loading{position:absolute;z-index:3;left:50%;top:42%;transform:translate(-50%,-50%);background:#fffffff4;padding:18px 30px;border:1px solid #e2e4dc;box-shadow:0 2px 22px #0001;color:#64716b}.loading[hidden]{display:none}@media(max-width:700px){header{padding:10px 12px;align-items:start;flex-direction:column;gap:10px}.brand strong{font-size:17px}nav{max-width:100%;width:100%;gap:4px}nav button{padding:9px}nav a{margin-left:5px;font-size:11px}} </style></head><body><div class="shell">
-<header><a class="brand" href="#activities"><strong>PENTA COURT</strong><span>MEMO STUDIO / CONCEPT 15</span></a><nav role="tablist" aria-label="Project sections">
-<button type="button" id="tab-activities" role="tab" aria-selected="true">Spatial Activities / 20</button>
-<button type="button" id="tab-model" role="tab" aria-selected="false">Original 3D BIM Viewer</button>
-<a id="open-page" href="activities.html" target="_blank" rel="noopener">Open full page ↗</a>
-</nav></header>
-<main><div class="loading" id="loading" role="status">Loading Penta Court…</div><iframe id="content" title="Penta Court interactive workspace" loading="eager" allow="fullscreen"></iframe></main>
-</div><script>
-(function(){
-var pages={activities:'activities.html',model:'Penta_Court_Viewer%20(4).html'},view=document.getElementById('content'),loading=document.getElementById('loading'),last='';
-function show(){var key=location.hash==='#model'?'model':'activities';document.getElementById('tab-activities').setAttribute('aria-selected',String(key==='activities'));document.getElementById('tab-model').setAttribute('aria-selected',String(key==='model'));document.getElementById('open-page').href=pages[key];if(last!==key){last=key;loading.hidden=false;view.src=pages[key];}}
-document.getElementById('tab-activities').onclick=function(){location.hash='activities';show()};
-document.getElementById('tab-model').onclick=function(){location.hash='model';show()};
-view.onload=function(){loading.hidden=true};
-window.addEventListener('hashchange',show);show();
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Penta Court · Living Courtyard</title><style>
+:root{color-scheme:light}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f7f8f4;color:#294235}.boot{min-height:100dvh;display:grid;place-items:center;padding:22px}.boot-inner{max-width:410px;text-align:center}.boot b{font-size:21px}.boot p{color:#6f7d70}.track{height:3px;background:#dfe7db;border-radius:8px;overflow:hidden;margin:18px 0}.track i{display:block;height:100%;background:#6a9879;width:0%;transition:width .2s}.links a{color:#3d7256;font-size:12px;margin:0 6px}#error{color:#994e4e;font-size:13px}
+</style></head><body><main class="boot"><div class="boot-inner"><b>Penta Court</b><p id="msg">Opening the 3D living courtyard…</p><div class="track"><i id="bar"></i></div><p id="error" role="alert"></p><div class="links"><a href="activities.html">Spatial activities</a><a href="Penta_Court_Viewer%20%284%29.html">Standalone 3D viewer</a></div></div></main>
+<script>
+(async function(){
+const msg=document.getElementById('msg'),bar=document.getElementById('bar'),err=document.getElementById('error');
+const base='./Penta_Court_Viewer%20%284%29.html';
+const fallback='https://raw.githubusercontent.com/Memortal/Penta-Court/main/Penta_Court_Viewer%20%284%29.html';
+try{
+ let response=await fetch(base,{cache:'no-store'});
+ if(!response.ok){msg.textContent='Trying the GitHub source…';response=await fetch(fallback,{cache:'no-store'})}
+ if(!response.ok)throw Error('Model file unavailable (HTTP '+response.status+').');
+ const total=Number(response.headers.get('Content-Length'))||0;let source='';
+ if(response.body&&typeof TextDecoder!=='undefined'){
+  const reader=response.body.getReader(),decoder=new TextDecoder();let count=0;
+  for(;;){const {done,value}=await reader.read();if(done)break;count+=value.byteLength;source+=decoder.decode(value,{stream:true});
+   bar.style.width=Math.min(95,total?(count/total)*95:count/26000000*90)+'%';
+  }
+  source+=decoder.decode();
+ }else source=await response.text();
+ if(!source.includes('PentaGrowth')||!source.includes('PENTA'))throw Error('Model response incomplete.');
+ msg.textContent='Preparing the interactive courtyard…';bar.style.width='100%';
+ source=source.replace('</style><header>','</style><link rel="stylesheet" href="immersive.css"><header>');
+ const closing='</scr'+'ipt>';
+ source=source.replace(closing+'</html>',closing+'<script defer src="immersive.js">'+closing+'</html>');
+ document.open();document.write(source);document.close();
+}catch(e){console.error('Penta Court startup failed',e);msg.textContent='The 3D model could not open.';err.textContent=e.message+' Open the activity library or try the standalone viewer.';bar.style.width='0%'}
 })();
 </script></body></html>
