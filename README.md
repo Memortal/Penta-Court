@@ -6,10 +6,10 @@ An experimental computational architecture and botanical BIM project by **MEMO S
 
 ## Open the project
 
-The homepage (\`index.html\`) connects two interactive workspaces:
+The homepage (`index.html`) connects two interactive workspaces:
 
-1. **Spatial Activities & Experiences** — \`activities.html\`: twenty procedural isometric studies drawn from public-space activity references supplied for this project, arranged into arrival, culture, mobility, social, play, landscape, and productive categories.
-2. **Original 3D BIM viewer** — \`Penta_Court_Viewer (4).html\`: the original self-contained architectural model, garden simulation, apartment facades, roof access, elevator studies, robots and drawing set.
+1. **Spatial Activities & Experiences** — `activities.html`: twenty procedural isometric studies drawn from public-space activity references supplied for this project, arranged into arrival, culture, mobility, social, play, landscape, and productive categories.
+2. **Original 3D BIM viewer** — `Penta_Court_Viewer (4).html`: the original self-contained architectural model, garden simulation, apartment facades, roof access, elevator studies, robots and drawing set.
 
 ### Twenty activity prototypes
 
@@ -35,9 +35,9 @@ Activity workspace features include:
 
 Run a local server from the repository root:
 
-\`\`\`bash
+```bash
 python -m http.server 8000
-\`\`\`
+```
 
 Open http://localhost:8000/ to enter the unified homepage, or open http://localhost:8000/activities.html directly.
 
@@ -51,8 +51,8 @@ GitHub Pages publishes the static HTML, CSS and JavaScript. No build step is nee
 
 ## Technical notes
 
-- \`index.html\` — unified site navigation
-- \`activities.html\`, \`activities.css\`, \`activities.js\` — new activity design and siting tools
-- \`Penta_Court_Viewer (4).html\` — original self-contained 3D model, preserved
+- `index.html` — unified site navigation
+- `activities.html`, `activities.css`, `activities.js` — new activity design and siting tools
+- `Penta_Court_Viewer (4).html` — original self-contained 3D model, preserved
 
 The original building/growth/robot logic remains separate from the new conceptual activity studies.
