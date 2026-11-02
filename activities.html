@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Penta Court | Spatial Activities & Experiences</title>
+<link rel="stylesheet" href="activities.css">
+</head>
+<body>
+<header class="top">
+  <div class="identity"><span class="eyebrow">MEMO STUDIO / PENTA COURT</span><h1>Spatial Activities <em>&amp; Experiences</em></h1><p>20 outdoor programs · participatory landscape · botanical urbanism</p></div>
+  <div class="top-right"><div class="tag">Concept layer / schematic</div><a class="back" href="Penta_Court_Viewer%20(4).html" target="_top">Open original 3D model ↗</a></div>
+</header>
+<nav class="primary" aria-label="Activities workspace">
+ <button type="button" class="mode active" data-mode="catalog">01 / Activity library</button>
+ <button type="button" class="mode" data-mode="site">02 / Site placement</button>
+ <button type="button" class="mode" data-mode="schedule">03 / Program schedule</button>
+ <span class="stretch"></span><span class="nav-note">Drag the map nodes to test possible locations</span>
+</nav>
+<main>
+<section class="pane active" id="catalog">
+ <div class="filters" id="filters"></div>
+ <div class="section-caption"><span id="catalog-summary">20 spatial studies</span><span>Diagrammatic isometric models · select any tile</span></div>
+ <div class="workspace"><div class="tiles" id="tiles" aria-label="Activity modules"></div><aside class="inspector" id="inspector" aria-label="Selected program"></aside></div>
+</section>
+<section class="pane" id="site">
+ <div class="sitehead"><div><span class="eyebrow">660 × 660 FT / SITE STRATEGY</span><h2>Experience network</h2><p>Conceptual siting study. Drag a colored node to reposition it. Locations do not modify the underlying BIM geometry.</p></div><div class="sitecontrols"><button type="button" id="reset-placement">Reset placement</button><button type="button" id="download-placement" class="red">Export placement JSON</button></div></div>
+ <div class="map-layout"><div class="map-card"><div id="site-map" class="map-area"></div><div class="map-foot"><span><i class="circle pink"></i> Built activity</span><span><i class="circle green"></i> Ecological / planting</span><span>Dashed boundary = site study only</span></div></div><aside id="map-inspector" class="map-inspector"></aside></div>
+</section>
+<section class="pane" id="schedule">
+ <div class="sitehead"><div><span class="eyebrow">DESIGN RECORDS</span><h2>Activity schedule</h2><p>A conceptual program schedule. Areas, access, structure and lighting must be developed and coordinated before BIM documentation.</p></div><button type="button" id="download-schedule" class="red">Export schedule CSV</button></div>
+ <div class="schedule-stats" id="schedule-stats"></div>
+ <div class="table-scroll"><table><thead><tr><th>ID</th><th>Activity</th><th>Category</th><th>Suggested zone</th><th>Key components</th><th>In study</th></tr></thead><tbody id="program-rows"></tbody></table></div>
+</section>
+</main>
+<footer>MEMO STUDIO · PENTA COURT · 20 ACTIVITY PROTOTYPES <span>Inspired by the supplied spatial activity reference diagrams; original schematic models, not construction details.</span></footer>
+<script src="activities.js" defer></script>
+</body></html>
